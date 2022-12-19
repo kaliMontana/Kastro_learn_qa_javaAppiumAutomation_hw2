@@ -9,7 +9,7 @@ import org.openqa.selenium.remote.DesiredCapabilities;
 import java.net.URL;
 
 public class TestBase {
-	private AppiumDriver driver;
+	public AppiumDriver driver;
 
 
 	@Before
