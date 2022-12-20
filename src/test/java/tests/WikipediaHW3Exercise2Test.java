@@ -7,7 +7,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
-public class WikipediaHW3Test extends TestBase {
+public class WikipediaHW3Exercise2Test extends TestBase {
 	private final String SEARCHED_WORD = "Docker";
 	private final String ARTICLE_SUBTITLE = "Software for deploying containerized applications";
 
@@ -30,6 +30,7 @@ public class WikipediaHW3Test extends TestBase {
 		waitForInputFieldAndCheckThatHasText(
 				By.id("org.wikipedia:id/search_src_text"),
 				"Cannot find search filed",
+				"The search filed has not text",
 				5
 		);
 
@@ -77,10 +78,13 @@ public class WikipediaHW3Test extends TestBase {
 		return element;
 	}
 
-	private WebElement waitForInputFieldAndCheckThatHasText(By by, String errorMessage, long timeoutInSeconds) {
+	private WebElement waitForInputFieldAndCheckThatHasText(By by, String errorMessage, String AssertErrorMessage, long timeoutInSeconds) {
 		WebElement element = waitForElementPresent(by, errorMessage, timeoutInSeconds);
 		String text = element.getText();
-		Assert.assertNotEquals("", text);
+		Assert.assertNotEquals(
+				AssertErrorMessage,
+				text
+		);
 		return element;
 	}
 }
